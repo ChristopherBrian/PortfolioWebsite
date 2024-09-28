@@ -1,11 +1,11 @@
-/*=== GOOGLE FONTS ===*/
+/*=============== GOOGLE FONTS ===============*/
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@600&display=swap');
 
-/*=== VARIABLE CSS ===*/
+/*=============== VARIABLE CSS ===============*/
 :root {
     --header-height: 3.5rem;
 
-    /*=== COLORS ===*/
+    /*=============== COLORS ===============*/
     /* Color mode HSL(hue, saturation, lightness) */
     --first-color: hsl(268, 77%, 58%);
     --first-color-dark: hsl(268, 78%, 51%);
@@ -17,10 +17,10 @@
     --border-color: hsl(0, 0%, 20%);
     --white: #fff;
 
-    /*=== FONT AND TYPOGRAPHY ===*/
+    /*=============== FONT & TYPOGRAPHY ===============*/
     /* .5rem = 8px | 1rem = 16px ... */
     --body-font: 'Jost', sans-serif;
-    --big-font-size: 3.5rem;
+    --big-font-size: 3rem;
     --h1-font-size: 2.5rem;
     --h2-font-size: 2.25rem;
     --h3-font-size: 1.5rem;
@@ -33,9 +33,7 @@
     --weight-600: 600;
 }
 
-/*=== DARK THEME ===*/
-
-/*=== BASE ===*/
+/*=============== BASE ===============*/
 * {
     margin: 0;
     padding: 0;
@@ -82,7 +80,7 @@ img {
     max-width: 100%;
 }
 
-/*=== REUSABLE CSS CLASSES ===*/
+/*=============== CSS CLASSES ===============*/
 .container {
     max-width: 1200px;
     margin-inline: auto;
@@ -122,9 +120,7 @@ img {
     margin-bottom: 3rem;
 }
 
-/*=== STYLE SWITCHER ===*/
-
-/*=== HEADER & NAV ===*/
+/*=============== HEADER & NAV ===============*/
 .header {
     position: fixed;
     top: 0;
@@ -166,7 +162,7 @@ img {
     color: var(--first-color);
 }
 
-/*=== HOME ===*/
+/*=============== HOME ===============*/
 .home {
     background-color: var(--container-color);
     padding-block: 9rem 3rem;
@@ -261,7 +257,7 @@ img {
     }
 }
 
-/*=== BUTTON ===*/
+/*=============== BUTTON ===============*/
 .btn {
     display: inline-block;
     background-color: var(--first-color);
@@ -288,7 +284,7 @@ img {
     color: var(--white);
 }
 
-/*=== ABOUT ===*/
+/*=============== ABOUT ===============*/
 .about__container {
     grid-template-columns: 4fr 8fr;
     align-items: center
@@ -387,7 +383,7 @@ img {
     color: var(--first-color);
 }
 
-/*=== QUALIFICATION ===*/
+/*=============== QUALIFICATION ===============*/
 .resume {
     background-color: var(--container-color);
 }
@@ -463,7 +459,7 @@ img {
     margin-block: 1.25rem 2rem;
 }
 
-/*=== WORKS ===*/
+/*=============== WORKS ===============*/
 .work__container {
     grid-template-columns: repeat(3, 1fr);
 }
@@ -517,21 +513,193 @@ img {
     transform: translateY(0);
 }
 
+/*=============== FOOTER ===============*/
+.footer {
+    background-color: var(--container-color);
+    padding-block: 3rem;
+}
+
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 /*=============== BREAKPOINTS ===============*/
+
+/* Desktop fullscreen (default) */
+#nav-toggler {
+    display: none;
+}
+
+.nav__toggle {
+    display: none;
+}
+
 /* For large devices */
 @media screen and (max-width: 1200px) {
+    .container {
+        max-width: 960px;
+    }
+
+    :root {
+        --big-font-size: 2.5rem;
+        --h1-font-size: 2rem;
+        --h2-font-size: 1.75rem;
+        --h3-font-size: 1.25rem;
+        --larger-font-size: 1rem;
+        --large-font-size: 0.938rem;
+    }
+
+    .home__img {
+        width: 340px;
+    }
+
+    .about__img-wrapper {
+        height: 320px;
+    }
+
+    .resume__icon {
+        line-height: 1.4em;
+    }
 }
 
 @media screen and (max-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .home__container,
+    .about__container {
+        grid-template-columns: 1fr;
+    }
+
+    .home__content {
+        order: 1;
+    }
+
+    .home__img-wrapper {
+        margin-inline: auto;
+    }
+
+    .about__container {
+        row-gap: 2rem;
+    }
+
+    .about__img:not(:first-child) {
+        display: none;
+    }
+
+    .about__img:first-child {
+        clip-path: initial;
+        transform: initial;
+        left: 50%;
+        translate: -50%;
+    }
+
+    .work__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .resume__container {
+        row-gap: 2.5rem;
+    }
 }
 
 /* For medium devices */
 @media screen and (max-width: 768px) {
+    .container {
+        max-width: 560px;
+    }
+
+    .nav {
+        height: calc(var(--header-height) + 1rem);
+    }
+
+    .nav__list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--body-color);
+        flex-direction: column;
+        align-items: center;
+        row-gap: 0.75rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        padding: 0;
+    }
+
+    .nav__toggle {
+        display: block;
+        color: var(--text-color);
+        font-size: 1.3rem;
+        cursor: pointer;
+    }
+
+    #nav-toggler:checked ~ .nav__list {
+        max-height: 500px;
+        padding: 1.75rem;
+    }
+
+    .home__img {
+        width: 300px;
+    }
+
+    .resume__container {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* For small devices */
 @media screen and (max-width: 576px) {
+    .home {
+        padding-top: 7rem;
+    }
+
+    .section {
+        padding-block: 4rem;
+    }
+
+    .resume__icon {
+        display: none;
+    }
+
+    .resume__container,
+    .work__container {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media screen and (max-width: 450px) {
+    .about__data {
+        grid-template-columns: 1fr;
+    }
+
+    .about__bottom,
+    .resume__date-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .about__bottom {
+        row-gap: 1.25 rem;
+    }
+
+    .about__bottom .btn {
+        order: 1;
+    }
+
+    .resume__date-title {
+        row-gap: 0.25rem;
+    }
+
+    .resume__header {
+        padding-inline: 1rem;
+    }
+
+    .resume__content {
+        padding-inline: 1rem 1.5rem;
+    }
 }
